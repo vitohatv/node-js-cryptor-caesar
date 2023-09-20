@@ -11,5 +11,12 @@ app.get('/', (request, response) => {
     request.end();
 });
 
+app.get('/encode/:name', (request, response) => {
+    const param = request.params.name;
+    let cipher = Caesar.Cipher('password').crypt(param);
+    response.send('Шифратор:' + '' + cipher);
+    request.end();
+});
+
 app.listen(port);
 console.log('Server running on port 1605: http://localhost:' + port);
