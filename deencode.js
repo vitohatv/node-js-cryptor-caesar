@@ -8,21 +8,21 @@ app.get('/', (request, response) => {
     response.send(`Главная страница. Для использования шифратора необходимо
     переидти по пути: /encode/слово которое необходимо зашифорвать и так же
     дешифратор: /decode/зашифрованное слово`);
-    request.end();
+    response.end();
 });
 
 app.get('/encode/:name', (request, response) => {
     const param = request.params.name;
     let cipher = Caesar.Cipher('password').crypt(param);
     response.send('Шифратор:' + '' + cipher);
-    request.end();
+    response.end();
 });
 
 app.get('/decode/:name', (request, response) => {
     const param = request.params.name;
     let decipher = Caesar.Decipher('password').crypt(param);
     response.send('Дешифратор:' + '' + decipher);
-    request.end();
+    response.end();
 })
 
 
