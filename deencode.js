@@ -18,5 +18,13 @@ app.get('/encode/:name', (request, response) => {
     request.end();
 });
 
+app.get('/decode/:name', (request, response) => {
+    const param = request.params.name;
+    let decipher = Caesar.Decipher('password').crypt(param);
+    response.send('Дешифратор:' + '' + decipher);
+    request.end();
+})
+
+
 app.listen(port);
 console.log('Server running on port 1605: http://localhost:' + port);
